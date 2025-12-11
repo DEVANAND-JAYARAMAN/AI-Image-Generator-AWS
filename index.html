@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator Pro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-magic"></i> AI Image Generator Pro</h1>
+            <p>Transform your imagination into stunning visuals</p>
+        </header>
+
+        <main class="main-content">
+            <div class="generator-section">
+                <div class="input-group">
+                    <label for="promptInput">Describe your vision</label>
+                    <textarea id="promptInput" placeholder="A majestic dragon soaring through a cyberpunk cityscape at sunset..." rows="3"></textarea>
+                </div>
+
+                <div class="controls-row">
+                    <div class="control-group">
+                        <label for="styleSelect">Art Style</label>
+                        <select id="styleSelect">
+                            <option value="">Default</option>
+                            <option value="photorealistic">Photorealistic</option>
+                            <option value="digital art">Digital Art</option>
+                            <option value="oil painting">Oil Painting</option>
+                            <option value="watercolor">Watercolor</option>
+                            <option value="anime">Anime</option>
+                            <option value="cyberpunk">Cyberpunk</option>
+                            <option value="fantasy">Fantasy</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="sizeSelect">Image Size</label>
+                        <select id="sizeSelect">
+                            <option value="512x512">Square (512×512)</option>
+                            <option value="768x512">Landscape (768×512)</option>
+                            <option value="512x768">Portrait (512×768)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="generateBtn" class="generate-btn" onclick="generateImage()">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    <span>Generate Image</span>
+                </button>
+
+                <div id="loading" class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <p>Creating your masterpiece...</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <div id="imageContainer" class="image-container">
+                    <img id="resultImage" alt="Generated image" style="display: none;">
+                    <div class="image-overlay">
+                        <button class="action-btn" onclick="downloadImage()" title="Download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="action-btn" onclick="generateAgain()" title="Generate Again">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <button class="action-btn" onclick="shareImage()" title="Share">
+                            <i class="fas fa-share"></i>
+                        </button>
+                        <button class="action-btn" onclick="saveToGallery()" title="Save to Gallery">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-section">
+                <div class="section-header">
+                    <h3><i class="fas fa-images"></i> Recent Creations</h3>
+                    <button class="clear-btn" onclick="clearGallery()">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+                <div id="gallery" class="gallery-grid"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>
